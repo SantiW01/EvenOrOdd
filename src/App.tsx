@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from "react";
+import "./Styles/App.scss";
+import { Button, ButtonGroup } from "react-bootstrap";
+import Fade from "react-bootstrap/Fade";
+export default function App() {
+  const [number, setNumber] = useState<number>(0);
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <div className="">
+        <p className="h1">Guess if the number is Even or Odd</p>
+        <ButtonGroup
+          onClick={() => {
+            setOpen(!open);
+            open == false
+              ? setNumber(Math.floor(Math.random() * 100 + 1))
+              : setNumber(0);
+          }}
+          aria-controls="testing"
+          aria-expanded={open}
+          className=""
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Button className="">Even</Button>
+          <Button className="">Odd</Button>
+        </ButtonGroup>
+        <Fade in={open} timeout={100}>
+          <p className="">{number}</p>
+        </Fade>
+      </div>
+    </>
   );
 }
-
-export default App;
