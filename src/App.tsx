@@ -5,6 +5,7 @@ import Fade from "react-bootstrap/Fade";
 export default function App() {
   const [number, setNumber] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
+  const [isEven, setIsEven] = useState<boolean>(false);
   return (
     <>
       <div className="">
@@ -12,7 +13,7 @@ export default function App() {
         <ButtonGroup
           onClick={() => {
             setOpen(!open);
-            open == false
+            open === false
               ? setNumber(Math.floor(Math.random() * 100 + 1))
               : setNumber(0);
           }}
@@ -21,10 +22,23 @@ export default function App() {
           className=""
         >
           <Button className="">Even</Button>
-          <Button className="">Odd</Button>
+          <Button onClick={() => setIsEven(!isEven)} className="">
+            Odd
+          </Button>
         </ButtonGroup>
-        <Fade in={open} timeout={100}>
+        <Fade in={open}>
           <p className="">{number}</p>
+        </Fade>
+        <Fade in={open}>
+          <Button
+            onClick={() => {
+              setIsEven(!isEven);
+              setOpen(!open);
+            }}
+            className=""
+          >
+            Reset
+          </Button>
         </Fade>
       </div>
     </>
