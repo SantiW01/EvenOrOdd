@@ -2,46 +2,15 @@ import React, { useState, useContext, createContext } from "react";
 import "./Styles/App.scss";
 import { Button, ButtonGroup } from "react-bootstrap";
 import Fade from "react-bootstrap/Fade";
+import CheckIsEven from "./Components/CheckIsEven";
+import CheckIsOdd from "./Components/CheckIsOdd";
+
+export const checkNumber = createContext<number>(0);
+
 export default function App() {
   const [number, setNumber] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
   const [isEven, setIsEven] = useState<boolean>(true);
-  const checkNumber = createContext<number>(number);
-
-  function CheckIsEven(): any {
-    const number: number = useContext(checkNumber);
-    if (number % 2 === 0) {
-      return (
-        <>
-          <p>You won!</p>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <p>You lose! Better luck next time.</p>
-        </>
-      );
-    }
-  }
-
-  function CheckIsOdd(): any {
-    const number: number = useContext(checkNumber);
-
-    if (number % 2 !== 0) {
-      return (
-        <>
-          <p>You won!</p>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <p>You lose! Better luck next time.</p>
-        </>
-      );
-    }
-  }
 
   return (
     <>
