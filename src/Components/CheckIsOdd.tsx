@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Fade } from "react-bootstrap";
 import { checkNumber } from "../App";
 export default function CheckIsOdd() {
   const number: number = useContext(checkNumber);

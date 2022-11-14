@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, createContext } from "react";
 import "./Styles/App.scss";
 import { Button, ButtonGroup } from "react-bootstrap";
 import Fade from "react-bootstrap/Fade";
@@ -40,6 +40,17 @@ export default function App() {
         <Fade in={open}>
           <p className="h1 font-bold text-xl mb-2 col-auto p-5 text-center">
             {number}
+            <checkNumber.Provider value={number}>
+              {isEven === true ? (
+                <Fade in={open}>
+                  <CheckIsEven />
+                </Fade>
+              ) : (
+                <Fade in={open}>
+                  <CheckIsOdd />
+                </Fade>
+              )}
+            </checkNumber.Provider>
           </p>
         </Fade>
         <Fade in={open}>
@@ -52,11 +63,6 @@ export default function App() {
           >
             Reset
           </button>
-        </Fade>
-        <Fade in={open}>
-          <checkNumber.Provider value={number}>
-            {isEven === true ? <CheckIsEven /> : <CheckIsOdd />}
-          </checkNumber.Provider>
         </Fade>
       </div>
     </>
